@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color palette Generator</title>
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Color Palette Generator</h1>
+        <button id="generate-btn">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            Generate palette
+        </button>
+        <button id="save-btn">
+            <i class="fas fa-heart"></i>
+            Save Palette
+        </button>
+
+        <div class="palette-container">
+            <!-- Color Box 1 -->
+            <div class="color-box">
+                <div class="color" style="background-color: #fdf4f4"></div>
+                <div class="color-info">
+                    <span class="hex-value">#fdf4f4</span>
+                    <i class="fas fa-lock-open lock-btn"></i>
+                    
+                    <i class="far fa-copy copy-btn" title="copy to clibbord"></i>
+                </div>
+
+            </div>
+
+            <!-- Color Box 2 -->
+            <div class="color-box">
+                <div class="color" style="background-color: #c22a2a"></div>
+                <div class="color-info">
+                    <span class="hex-value">#c22a2a</span>
+                    <i class="fas fa-lock-open lock-btn"></i>
+                    <i class="far fa-copy copy-btn" title="copy to clibbord"></i>
+                </div>
+
+            </div>
+
+            <!-- Color Box 3 -->
+            <div class="color-box">
+                <div class="color" style="background-color: #0e0101"></div>
+                <div class="color-info">
+                    <span class="hex-value">#0e0101</span>
+                    <i class="fas fa-lock-open lock-btn"></i>
+
+                    <i class="far fa-copy copy-btn" title="copy to clibbord"></i>
+                </div>
+
+            </div>
+
+            <!-- Color Box 4 -->
+            <div class="color-box">
+                <div class="color" style="background-color: #20056e"></div>
+                <div class="color-info">
+                    <span class="hex-value">#20056e</span>
+                    <i class="fas fa-lock-open lock-btn"></i>
+                    <i class="far fa-copy copy-btn" title="copy to clibbord"></i>
+                </div>
+
+            </div>
+
+            <!-- Color Box 5 -->
+            <div class="color-box">
+                <div class="color" style="background-color: #409664"></div>
+                <div class="color-info">
+                    <span class="hex-value">#409664</span>
+                    <i class="fas fa-lock-open lock-btn"></i>
+                    <i class="far fa-copy copy-btn" title="copy to clibbord"></i>
+                </div>
+            </div>
+        </div>
+        <h2>Saved Palettes</h2>
+
+        <div id="saved-palettes"></div>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
