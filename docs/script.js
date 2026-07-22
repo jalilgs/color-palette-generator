@@ -111,6 +111,7 @@ function renderSavedPalettes(){
         })
     })
 }
+//
 renderSavedPalettes();
 
 function getContrastColor(hex){
