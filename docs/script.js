@@ -4,6 +4,74 @@ const body = document.body
 const saveBtn = document.getElementById("save-btn");
 const savedPalettesContainer = document.getElementById("saved-palettes");
 
+//__________________________________________________________________________________________________
+
+function boxAnimation(){
+    const allBoxes = document.querySelectorAll(".color-box");
+
+const box1 = allBoxes[0];
+const box2 = allBoxes[1];
+const box3 = allBoxes[2];
+const box4 = allBoxes[3];
+const box5 = allBoxes[4];
+
+const rect1 = allBoxes[0].getBoundingClientRect();
+const rect2 = allBoxes[1].getBoundingClientRect();
+const rect3 = allBoxes[2].getBoundingClientRect();
+const rect4 = allBoxes[3].getBoundingClientRect();
+const rect5 = allBoxes[4].getBoundingClientRect();
+
+// For each box: how far LEFT/RIGHT (x) AND UP/DOWN (y) to reach Box 3
+const box1X = rect3.left - rect1.left;
+const box1Y = rect3.top - rect1.top;
+
+const box2X = rect3.left - rect2.left;
+const box2Y = rect3.top - rect2.top;
+
+const box4X = rect3.left - rect4.left;
+const box4Y = rect3.top - rect4.top;
+
+const box5X = rect3.left - rect5.left;
+const box5Y = rect3.top - rect5.top;
+
+const timing = { duration: 1000, easing: "ease-in-out" };
+
+box1.animate([
+    { transform: "translate(0px, 0px)", offset: 0 },
+    { transform: `translate(${box1X}px, ${box1Y}px)`, offset: 0.6 },
+    { transform: "translate(0px, 0px)", offset: 1 }
+], timing);
+
+box2.animate([
+    { transform: "translate(0px, 0px)", offset: 0 },
+    { transform: "translate(0px, 0px)", offset: 0.3 },
+    { transform: `translate(${box2X}px, ${box2Y}px)`, offset: 0.6 },
+    { transform: "translate(0px, 0px)", offset: 1 }
+], timing);
+
+box4.animate([
+    { transform: "translate(0px, 0px)", offset: 0 },
+    { transform: "translate(0px, 0px)", offset: 0.3 },
+    { transform: `translate(${box4X}px, ${box4Y}px)`, offset: 0.6 },
+    { transform: "translate(0px, 0px)", offset: 1 }
+], timing);
+
+box5.animate([
+    { transform: "translate(0px, 0px)", offset: 0 },
+    { transform: `translate(${box5X}px, ${box5Y}px)`, offset: 0.6 },
+    { transform: "translate(0px, 0px)", offset: 1 }
+], timing);
+
+box3.animate([
+    { transform: "scale(1)", offset: 0 },
+    { transform: "scale(1)", offset: 0.5 },
+    { transform: "scale(1.15)", offset: 0.65 },
+    { transform: "scale(1)", offset: 1 }
+], timing);
+
+}
+
+//________________________________________________________________________
 let savedPalettes = [];
 let colors = [];
 
@@ -137,7 +205,7 @@ function showCopySuccess(element){
 
 function generatePalette(){
     
-
+    boxAnimation()
     
     for(let i=0; i<colors.length; i++){
         if(!colors[i].locked){

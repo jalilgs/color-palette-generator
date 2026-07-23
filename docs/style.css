@@ -222,3 +222,21 @@ h2{
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 }
+
+.palette-container {
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.palette-container.shrink {
+    transform: scale(0.3);
+    opacity: 0.4;
+}
+
+.palette-container.grow {
+    animation: growBack 0.35s ease-out;
+}
+
+@keyframes growBack {
+    from { transform: scale(0.3); opacity: 0.4; }
+    to   { transform: scale(1); opacity: 1; }
+}
