@@ -3,7 +3,7 @@ const paletteContainer = document.querySelector(".palette-container")
 const body = document.body
 const saveBtn = document.getElementById("save-btn");
 const savedPalettesContainer = document.getElementById("saved-palettes");
-
+const animationToggle = document.getElementById("animation-toggle");
 //__________________________________________________________________________________________________
 
 function boxAnimation(){
@@ -71,6 +71,19 @@ box3.animate([
 
 }
 
+animationToggle.title = animationToggle.checked
+    ? "Disable animations"
+    : "Enable animations";
+
+animationToggle.addEventListener("change", function () {
+    animationEnabled = animationToggle.checked;
+
+    if (animationEnabled) {
+        animationToggle.title = "Disable animations";
+    } else {
+        animationToggle.title = "Enable animations";
+    }
+});
 //________________________________________________________________________
 let savedPalettes = [];
 let colors = [];
@@ -82,11 +95,15 @@ for (let i = 0; i < 5; i++) {
 
 // Show it
 updatePaletteDisplay(colors);
-updateBgColor(colors);
-updateButton(colors);
-updateAccentColor(colors);
+// updateBgColor(colors);
+// updateButton(colors);
+// updateAccentColor(colors);
 
+const colorValues = colors.map(color => color.value);
 
+updateBgColor(colorValues);
+updateButton(colorValues);
+updateAccentColor(colorValues);
 
 generateBtn.addEventListener("click", generatePalette)
 
@@ -203,24 +220,77 @@ function showCopySuccess(element){
     }, 1500)
 }
 
+let animationEnabled = true;
+
 function generatePalette(){
     
-    boxAnimation()
+    // if (animationEnabled){
+    //     boxAnimation()
     
-    for(let i=0; i<colors.length; i++){
-        if(!colors[i].locked){
-            colors[i]= generateRandomColor()
+    // for(let i=0; i<colors.length; i++){
+    //     if(!colors[i].locked){
+    //         colors[i]= generateRandomColor()
             
-        }
+    //     }
+    // }
+
+    // setTimeout(() => {
+    //     updatePaletteDisplay(colors);
+    //     const colorValues = colors.map(color => color.value);
+
+    //     updateBgColor(colorValues);
+    //     updateButton(colorValues);
+    //     updateAccentColor(colorValues);
+    // }, 500);
+    // }else{
+     
+
+    //     for(let i=0; i<colors.length; i++){
+    //     if(!colors[i].locked){
+    //         colors[i]= generateRandomColor()
+            
+    //         }
+    //     }
+    //     updatePaletteDisplay(colors);
+    //     const colorValues = colors.map(color => color.value);
+
+    //     updateBgColor(colorValues);
+    //     updateButton(colorValues);
+    //     updateAccentColor(colorValues);
+    // }
+
+
+    if (animationEnabled) {
+        boxAnimation();
     }
 
-    updatePaletteDisplay(colors)
-    
-    const colorValues = colors.map(color => color.value);
+    const delay = animationEnabled ? 500 : 0;
 
-    updateBgColor(colorValues);
-    updateButton(colorValues);
-    updateAccentColor(colorValues);
+    setTimeout(() => {
+
+        for (let i = 0; i < colors.length; i++) {
+            if (!colors[i].locked) {
+                colors[i] = generateRandomColor();
+            }
+        }
+
+        updatePaletteDisplay(colors);
+
+        const colorValues = colors.map(color => color.value);
+
+        updateBgColor(colorValues);
+        updateButton(colorValues);
+        updateAccentColor(colorValues);
+
+    }, delay);
+
+    // updatePaletteDisplay(colors)
+    
+    // const colorValues = colors.map(color => color.value);
+
+    // updateBgColor(colorValues);
+    // updateButton(colorValues);
+    // updateAccentColor(colorValues);
 }
 
 
@@ -258,7 +328,9 @@ function updateBgColor(colorValues){
 
 function updateButton(colorValues){
     generateBtn.style.background =
-        `linear-gradient(45deg, ${colorValues[2]}, ${colorValues[3]})`;
+        `linear-gradient(45deg, ${colorValues[0]}, ${colorValues[2]})`;
+    saveBtn.style.background =
+        `linear-gradient(45deg, ${colorValues[1]}, ${colorValues[3]})`;
 }
 
 function updateAccentColor(colorValues){
@@ -266,5 +338,14 @@ function updateAccentColor(colorValues){
         "--accent-color",
         colorValues[4]
     );
+    document.documentElement.style.setProperty(
+        "--toggle-color",
+        colorValues[4]
+    );
+    document.documentElement.style.setProperty(
+        "--toggle-border",
+        colorValues[4]
+    );
+
 }
-generatePalette()
+// generatePalette()

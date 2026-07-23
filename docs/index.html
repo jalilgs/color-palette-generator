@@ -11,15 +11,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <body>
     <div class="container">
         <h1>Color Palette Generator</h1>
-        <button id="generate-btn">
-            <i class="fa-solid fa-arrows-rotate"></i>
-            Generate palette
-        </button>
-        <button id="save-btn">
-            <i class="fas fa-heart"></i>
-            Save Palette
-        </button>
+        <div class="controls">
+    <button id="generate-btn">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        Generate Palette
+    </button>
 
+    <button id="save-btn">
+        <i class="fas fa-heart"></i>
+        Save Palette
+    </button>
+
+    <div class="toggle">
+        <input type="checkbox" id="animation-toggle" checked title="Enable animations">
+        <label for="animation-toggle" title="Enable animations">✨</label>
+    </div>
+</div>
         <div class="palette-container">
             <!-- Color Box 1 -->
             <div class="color-box">
